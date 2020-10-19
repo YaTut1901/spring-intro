@@ -1,10 +1,9 @@
-package spring.intro;
+package spring.project;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import spring.intro.config.AppConfig;
-import spring.intro.model.User;
-import spring.intro.service.UserService;
+import spring.project.config.AppConfig;
+import spring.project.model.User;
+import spring.project.service.UserService;
 
 public class Main {
 

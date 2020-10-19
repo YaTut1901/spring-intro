@@ -1,23 +1,22 @@
-package spring.intro.dao;
+package spring.project.dao;
 
 import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import spring.intro.model.User;
-
-import javax.sql.DataSource;
+import spring.project.model.User;
 
 @Repository
 public class UserDaoImpl implements UserDao {
 
-    @Autowired
     private SessionFactory sessionFactory;
+
     @Autowired
-    private DataSource dataSource;
+    public UserDaoImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
     @Override
     public void add(User user) {
@@ -43,8 +42,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public List<User> getAll() {
         try (Session session = sessionFactory.openSession()) {
-            return session
-                    .createQuery("from User", User.class)
+            return session.createQuery("from User", User.class)
                     .getResultList();
         }
     }

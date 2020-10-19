@@ -1,4 +1,4 @@
-package spring.intro.config;
+package spring.project.config;
 
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
-import spring.intro.model.User;
+import spring.project.model.User;
 
 @Configuration
 @ComponentScan(basePackages = {
-        "spring.intro.dao",
-        "spring.intro.service"})
+        "spring.project.dao",
+        "spring.project.service"})
 public class AppConfig {
     @Bean
     public DataSource getDataSource() {
