@@ -14,6 +14,7 @@ import spring.intro.model.User;
         "spring.intro.dao",
         "spring.intro.service"})
 public class AppConfig {
+    @Bean
     public DataSource getDataSource() {
         BasicDataSource source = new BasicDataSource();
         source.setDriverClassName("com.mysql.cj.jdbc.Driver");

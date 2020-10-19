@@ -1,11 +1,13 @@
 package spring.intro;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.intro.config.AppConfig;
 import spring.intro.model.User;
 import spring.intro.service.UserService;
 
 public class Main {
+
     public static void main(String[] args) {
         AnnotationConfigApplicationContext context
                 = new AnnotationConfigApplicationContext(AppConfig.class);
@@ -19,6 +21,6 @@ public class Main {
         userService.add(user2);
         userService.add(user3);
 
-        userService.usersList().forEach(System.out::println);
+        userService.listUsers().forEach(System.out::println);
     }
 }
