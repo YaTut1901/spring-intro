@@ -1,7 +1,7 @@
 package spring.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,11 +43,14 @@ public class UserController {
         return new UserResponseDto(user.getId(), user.getEmail(), user.getPassword());
     }
 
+    @GetMapping
     public List<UserResponseDto> getAll() {
-        List<UserResponseDto> list = new ArrayList<>();
-        for (User user : userService.listUsers()) {
-            list.add(new UserResponseDto(user.getId(), user.getEmail(), user.getPassword()));
-        }
-        return list;
+        return userService.listUsers().stream()
+                .map(this::userToDto)
+                .collect(Collectors.toList());
+    }
+
+    private UserResponseDto userToDto(User user) {
+        return new UserResponseDto(user.getId(), user.getEmail(), user.getPassword());
     }
 }
