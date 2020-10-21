@@ -37,13 +37,12 @@ public class UserController {
         return "All users have been added to DB";
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     public UserResponseDto get(@PathVariable Long id) {
         User user = userService.get(id);
         return new UserResponseDto(user.getId(), user.getEmail(), user.getPassword());
     }
 
-    @GetMapping("/")
     public List<UserResponseDto> getAll() {
         List<UserResponseDto> list = new ArrayList<>();
         for (User user : userService.listUsers()) {
